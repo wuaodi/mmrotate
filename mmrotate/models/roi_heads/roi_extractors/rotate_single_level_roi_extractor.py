@@ -98,7 +98,10 @@ class RotatedSingleRoIExtractor(BaseRoIExtractor):
         Returns:
             torch.Tensor: Scaled RoI features.
         """
-        out_size = self.roi_layers[0].out_size
+        if isinstance(self.roi_layers[0], ops.RiRoIAlignRotated):
+          out_size = nn.modules.utils._pair(self.roi_layers[0].out_size)
+        else:
+          out_size = self.roi_layers[0].output_size[0]
         num_levels = len(feats)
         expand_dims = (-1, self.out_channels * out_size * out_size)
         if torch.onnx.is_in_onnx_export():
