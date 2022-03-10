@@ -33,10 +33,9 @@ class DOTADataset(CustomDataset):
         version (str, optional): Angle representations. Defaults to 'oc'.
         difficulty (bool, optional): The difficulty threshold of GT.
     """
-    CLASSES = ('plane', 'baseball-diamond', 'bridge', 'ground-track-field',
-               'small-vehicle', 'large-vehicle', 'ship', 'tennis-court',
-               'basketball-court', 'storage-tank', 'soccer-ball-field',
-               'roundabout', 'harbor', 'swimming-pool', 'helicopter')
+    CLASSES = ('solar-panel', 'track-field', 'highway-bridge', 'waterway-bridge',
+               'ship', 'overpass', 'storage-tank', 'airplane',
+               'windmill')
 
     def __init__(self,
                  ann_file,
